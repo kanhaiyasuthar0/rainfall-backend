@@ -9,7 +9,7 @@ app.get("/", rainController.greet());
 app.get("/all", rainController.all());
 app.post("/add", rainController.post());
 app.post("/newRain", rainController.newRain());
-app.post("/rainAll", rainController.rainAll());
+app.get("/rainAll", rainController.rainAll());
 // app.post("/add", blogsController.addBlogs());
 // app.get("/all", blogsController.getAllBlogs());
 // app.post("/title", blogsController.getdataByTitle());
