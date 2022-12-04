@@ -10,6 +10,14 @@ const all = () => {
         res.send(all);
     };
 };
+const rainAll = () => {
+    return async (req, res) => {
+        let all = await Rain.find({}).lean().exec();
+        // let filtered = all.filter((ele) => ele.author == req.body.author);
+        res.send(all);
+    };
+};
+
 
 // add new blog to bakcend
 const post = () => {
@@ -91,5 +99,5 @@ module.exports = {
     likeBlog,
     getdataByTitle,
     viweBlog,
-    greet, newRain
+    greet, newRain, rainAll
 };
