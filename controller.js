@@ -81,4 +81,5 @@ module.exports = {
     likeBlog,
     getdataByTitle,
     viweBlog,
+    greet
 };
