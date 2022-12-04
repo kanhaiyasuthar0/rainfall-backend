@@ -1,4 +1,5 @@
 const Blogs = require("./model");
+const Rain = require("./rainfallModel");
 
 //search data with author
 const all = () => {
@@ -16,6 +17,15 @@ const post = () => {
     return async (req, res) => {
         console.log(req.body)
         let response = await Blogs.insertMany([req.body]);
+        console.log(response);
+        res.send(response);
+    };
+};
+const newRain = () => {
+    console.log("trigg")
+    return async (req, res) => {
+        console.log(req.body)
+        let response = await Rain.insertMany([req.body]);
         console.log(response);
         res.send(response);
     };
@@ -81,5 +91,5 @@ module.exports = {
     likeBlog,
     getdataByTitle,
     viweBlog,
-    greet
+    greet, newRain
 };
