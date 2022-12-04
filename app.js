@@ -5,6 +5,7 @@ const rainController = require("./controller");
 app.use(express.json([]));
 app.use(cors());
 // app.get("/", blogsController.greet());
+app.get("/", rainController.greet());
 app.get("/all", rainController.all());
 app.post("/add", rainController.post());
 // app.post("/add", blogsController.addBlogs());
