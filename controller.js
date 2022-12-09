@@ -1,12 +1,29 @@
 const Blogs = require("./model");
 const Rain = require("./rainfallModel");
+const StrangeTable = require("./StrengthModel");
 
 //search data with author
 const all = () => {
     return async (req, res) => {
+
         let all = await Blogs.find({}).lean().exec();
         // let filtered = all.filter((ele) => ele.author == req.body.author);
 
+        res.send(all);
+    };
+};
+//get strange table
+const getStrangeTable = () => {
+    return async (req, res) => {
+        let all = await StrangeTable.find({}).lean().exec();
+        res.send(all);
+    };
+};
+//get strange table
+const postStrangeTable = () => {
+    console.log("posting")
+    return async (req, res) => {
+        let all = await StrangeTable.insertMany([req.body])
         res.send(all);
     };
 };
@@ -21,7 +38,7 @@ const rainAll = () => {
 
 // add new blog to bakcend
 const post = () => {
-    console.log("trigg")
+    // console.log("trigg")
     return async (req, res) => {
         console.log(req.body)
         let response = await Blogs.insertMany([req.body]);
@@ -35,6 +52,19 @@ const newRain = () => {
         console.log(req.body)
         let response = await Rain.insertMany([req.body]);
         console.log(response);
+        res.send(response);
+    };
+};
+const updateRainData = () => {
+
+    return async (request, res) => {
+        // console.log(req.body)
+        //   await Rain.insertMany([req.body]);
+        // console.log(response);
+        console.log('Update triggered')
+        let response = await Rain.updateOne({
+            _id: request.body.id
+        }, { data: request.body.data }, { upsert: true });
         res.send(response);
     };
 };
@@ -99,5 +129,5 @@ module.exports = {
     likeBlog,
     getdataByTitle,
     viweBlog,
-    greet, newRain, rainAll
+    greet, newRain, rainAll, getStrangeTable, postStrangeTable, updateRainData
 };

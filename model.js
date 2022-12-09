@@ -1,15 +1,29 @@
 const mongoose = require("mongoose");
 const rainSchema = mongoose.Schema(
     {
-        name: String,
+        username: String,
+        projectname: String,
+        area: {
+            value: String,
+            unit: Number
+        },
+        catchment: {
+            value: Number
+        },
+        totalnoofyeardata: Number,
+        dependability: [{ value: Number, status: Boolean, at: String }]
+        ,
+        userEntered: [{
+            year: { type: Number },
+            rainfall: { type: Number }
+        }],
         data: [{
             year: { type: Number },
             rainfall: { type: Number },
             sortedrainfall: { type: Number },
             runoff: { type: Number },
             yield: { type: Number },
-            dependabilty: { type: Number },
-            depend: [{ at: { type: String }, val: { type: Number } }]
+            dependabilty: { type: Number }
         }]
         // id: { type: Number, required: true },
         // title: { type: String, required: true },
